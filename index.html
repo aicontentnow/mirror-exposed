@@ -1,0 +1,1288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>[MIRRØR] — mirror.exposed</title>
+<meta name="description" content="[MIRRØR] — nothing held. Podcast, vertical video, music, books. mirror.exposed">
+
+<!-- Open Graph -->
+<meta property="og:title" content="[MIRRØR] — mirror.exposed">
+<meta property="og:description" content="nothing held. Raw transmissions from [MIRRØR]. Podcast. Video. Music. Books.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mirror.exposed">
+<meta property="og:image" content="https://mirror.exposed/assets/podcast/cover-1024.jpg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="1024">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="[MIRRØR] — mirror.exposed">
+<meta name="twitter:description" content="nothing held. Raw transmissions from [MIRRØR].">
+<meta name="twitter:image" content="https://mirror.exposed/assets/podcast/cover-1024.jpg">
+
+<link rel="canonical" href="https://mirror.exposed">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ----------  tokens  ---------- */
+:root {
+  --bg:        #0A0A0A;
+  --bg-alt:    #111111;
+  --bg-card:   #141414;
+  --bg-lifted: #1A1A1A;
+  --line:      #1f1f1f;
+  --line-2:    #2a2a2a;
+  --text:      #F0F0F0;
+  --mute:      #888888;
+  --mute-2:    #555555;
+  --yellow:    #FFE000;
+  --pink:      #FF2D6F;
+  --cyan:      #00E5FF;
+
+  --maxw:   1320px;
+  --gutter: clamp(20px, 4vw, 56px);
+  --section-y: clamp(72px, 10vw, 140px);
+
+  --display: "Space Grotesk", system-ui, -apple-system, Helvetica, Arial, sans-serif;
+  --mono:    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-snap: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:  120ms;
+  --dur-base:  220ms;
+
+  --nav-h: 64px;
+}
+
+/* ----------  reset  ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--text); }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: var(--nav-h);
+}
+body {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+::selection { background: var(--yellow); color: #000; }
+a { color: inherit; text-decoration: none; transition: color var(--dur-fast) var(--ease-out); }
+a:hover { color: var(--yellow); }
+a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+img { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+/* ----------  shared layout  ---------- */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--gutter); }
+.rule { height: 1px; background: var(--line); border: 0; margin: 0; }
+
+.section { padding-block: var(--section-y); position: relative; }
+.section--alt { background: var(--bg-alt); }
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  margin-bottom: clamp(28px, 4vw, 56px);
+  flex-wrap: wrap;
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.eyebrow .num { color: var(--yellow); }
+
+.live-pip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  border: 1px solid var(--pink);
+  color: var(--pink);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  margin-left: 14px;
+}
+.live-pip::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: 0 0 8px var(--pink);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+h2.section-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(56px, 10vw, 148px);
+  letter-spacing: -.04em;
+  line-height: .88;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin: 0;
+}
+.section-sub {
+  color: var(--mute);
+  font-size: clamp(15px, 1.4vw, 18px);
+  max-width: 56ch;
+  margin: 18px 0 0;
+}
+
+/* ----------  chrome text  ---------- */
+.chrome {
+  background: linear-gradient(
+    105deg,
+    #2a2a2a 0%,
+    #888 18%,
+    #ddd 32%,
+    #ffffff 44%,
+    #ddd 56%,
+    #888 70%,
+    #3a3a3a 84%,
+    #9a9a9a 100%
+  );
+  background-size: 280% 100%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: chrome-travel 5.5s ease-in-out infinite alternate;
+  font-weight: 700;
+  letter-spacing: -.04em;
+}
+@keyframes chrome-travel {
+  0%   { background-position:   0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chrome { animation: none; background-position: 50% 50%; }
+}
+
+/* ----------  navigation  ---------- */
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  height: var(--nav-h);
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(10,10,10,0);
+  transition: background .25s ease, border-color .25s ease;
+  border-bottom: 1px solid transparent;
+}
+.nav.is-scrolled {
+  background: rgba(10,10,10,.82);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border-bottom-color: var(--line);
+}
+.nav-logo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -.02em;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2.2vw, 32px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.nav-links a {
+  color: var(--mute);
+  transition: color .15s ease;
+  padding: 6px 0;
+}
+.nav-links a:hover,
+.nav-links a:focus-visible { color: var(--yellow); outline: none; }
+.nav-links a:focus-visible { outline: 1px dashed var(--cyan); outline-offset: 4px; }
+
+@media (max-width: 760px) { .nav-links { display: none; } }
+
+/* ----------  HERO  ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  text-align: center;
+  padding: 120px var(--gutter) 80px;
+  background: #000;
+}
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -3;
+}
+@media (max-width: 768px) {
+  .hero {
+    min-height: 0;
+    padding: 72px 0 56px;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .hero-video {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    background: #000;
+  }
+  .hero-meta-strip { position: static; margin-top: 28px; }
+  .hero::before, .hero::after { display: none; }
+}
+
+.hero-mute {
+  position: absolute;
+  right: clamp(16px, 3vw, 28px);
+  bottom: clamp(80px, 10vh, 110px);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px 8px 10px;
+  background: rgba(10,10,10,.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(0,229,255,.25);
+  color: var(--cyan);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
+}
+.hero-mute:hover,
+.hero-mute:focus-visible { border-color: var(--yellow); color: var(--yellow); outline: none; }
+.hero-mute__icon { width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; }
+.hero-mute__icon svg { display: block; }
+.hero-mute .icon-on { display: none; }
+.hero-mute[aria-pressed="false"] .icon-on  { display: inline-flex; }
+.hero-mute[aria-pressed="false"] .icon-off { display: none; }
+@media (max-width: 768px) { .hero-mute { right: 14px; top: 84px; bottom: auto; } }
+
+/* bottom scrim — keeps meta strip legible */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10,10,10,.35) 0%, rgba(10,10,10,0) 14%, rgba(10,10,10,0) 65%, rgba(10,10,10,.92) 100%);
+  z-index: -2;
+  pointer-events: none;
+}
+/* subtle scanline grain */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.008) 0 1px, transparent 1px 3px);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hero-meta-strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: clamp(72px, 10vh, 110px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 1;
+  padding: 0 var(--gutter);
+}
+.domain-text {
+  font-family: var(--mono);
+  font-size: clamp(13px, 1.2vw, 15px);
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin: 0;
+}
+.hero-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin: 0;
+}
+.hero-tag .dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: 0 0 10px var(--pink);
+  margin: 0 10px 1px;
+  vertical-align: middle;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .35; transform: scale(.7); }
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: var(--mute-2);
+}
+.hero-scroll::after {
+  content: "";
+  display: block;
+  margin: 8px auto 0;
+  width: 1px;
+  height: 22px;
+  background: linear-gradient(to bottom, var(--mute-2), transparent);
+}
+
+/* ----------  TRANSMISSION  ---------- */
+.transmission { border-block: 1px solid var(--line); }
+.transmission-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 5vw, 72px);
+  align-items: end;
+}
+.transmission-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 88px);
+  line-height: .92;
+  letter-spacing: -.035em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--yellow);
+}
+.ph-cursor {
+  display: inline-block;
+  width: .5ch;
+  height: 1em;
+  background: var(--yellow);
+  vertical-align: -2px;
+  margin-left: 6px;
+  animation: blink 1.1s steps(1,end) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+.transmission-meta {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin: 20px 0 0;
+}
+
+.placeholder {
+  border: 1px dashed var(--cyan);
+  background:
+    repeating-linear-gradient(135deg, rgba(0,229,255,.025) 0 8px, transparent 8px 16px),
+    #0d0d0d;
+  padding: clamp(28px, 4vw, 44px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 220px;
+  justify-content: center;
+}
+.placeholder .ph-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+.placeholder .ph-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin: 0;
+}
+.placeholder .ph-sub {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.placeholder .ph-note {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--mute-2);
+  border-top: 1px solid var(--line-2);
+  padding-top: 14px;
+  margin-top: 6px;
+}
+
+@media (max-width: 820px) { .transmission-card { grid-template-columns: 1fr; } }
+
+/* ----------  LISTEN  ---------- */
+.section-listen { position: relative; isolation: isolate; }
+/* subtle paper-grain overlay signals the podcast sub-brand register */
+.section-listen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.listen-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 400px) 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+  margin-top: clamp(36px, 5vw, 64px);
+}
+
+.listen-cover { position: relative; width: 100%; }
+.listen-cover-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  height: auto;
+  /* riso-pink misregistration shadow: podcast sub-brand signature */
+  box-shadow:
+    8px 8px 0 0 rgba(255, 45, 111, 0.42),
+    0 0 0 1px rgba(216, 214, 204, 0.16),
+    0 24px 60px -16px rgba(0, 0, 0, 0.7);
+}
+.listen-cover-meta {
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #D8D6CC;
+}
+
+.listen-content { display: flex; flex-direction: column; gap: 26px; }
+.listen-lede {
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0;
+  max-width: 54ch;
+}
+.listen-body {
+  font-size: 15px;
+  color: var(--mute);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 54ch;
+}
+
+.listen-embed {
+  padding: 22px 24px 24px;
+  background: rgba(255, 224, 0, 0.04);
+  border: 1px solid rgba(255, 224, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.listen-embed .ph-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+.listen-embed .ph-title {
+  font-family: var(--display);
+  font-size: clamp(22px, 2.4vw, 34px);
+  font-weight: 700;
+  margin: 8px 0 4px;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.listen-embed .ph-sub {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.listen-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.listen-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 20px;
+  width: 100%;
+  max-width: 380px;
+  border: 1px solid rgba(255, 224, 0, 0.22);
+  color: var(--yellow);
+  background: transparent;
+  transition: background .15s ease, border-color .15s ease;
+}
+.listen-links a:hover { background: rgba(255, 224, 0, 0.08); border-color: var(--yellow); color: var(--yellow); }
+.listen-links a .arr { transition: transform .2s ease; }
+.listen-links a:hover .arr { transform: translateX(4px); }
+
+@media (max-width: 820px) {
+  .listen-grid { grid-template-columns: 1fr; }
+  .listen-links a { max-width: 100%; }
+}
+
+/* ----------  WATCH  ---------- */
+.watch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(12px, 1.6vw, 20px);
+  margin-top: clamp(36px, 5vw, 64px);
+}
+.short {
+  aspect-ratio: 9 / 16;
+  background: #0d0d0d;
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color .2s ease;
+}
+.short:hover { border-color: var(--yellow); }
+.short.is-placeholder::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(135deg, rgba(0,229,255,.04) 0 10px, transparent 10px 20px);
+}
+.short.is-placeholder { border-color: rgba(0,229,255,.3); }
+.short .short-label {
+  position: relative;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  text-align: center;
+  padding: 24px;
+  line-height: 1.6;
+}
+.short .short-label .ph-cursor { background: var(--cyan); }
+.short .short-index {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .28em;
+  color: var(--mute-2);
+}
+
+@media (max-width: 980px) { .watch-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .watch-grid { grid-template-columns: 1fr; } }
+
+/* ----------  MUSIC  ---------- */
+.music-block {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: end;
+  margin-top: clamp(36px, 5vw, 64px);
+}
+.music-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(18px, 2vw, 26px);
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  border-bottom: 2px solid var(--yellow);
+  padding: 6px 0;
+  transition: gap .2s ease;
+}
+.music-cta:hover { gap: 22px; color: var(--yellow); }
+.music-cta .arr { font-weight: 700; }
+.platform-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.platform-row span {
+  border: 1px solid var(--line-2);
+  padding: 8px 12px;
+}
+@media (max-width: 760px) { .music-block { grid-template-columns: 1fr; align-items: start; } }
+
+/* ----------  THE BOOK  ---------- */
+.book-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--line-2);
+  padding: clamp(32px, 4vw, 56px);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+  overflow: hidden;
+  margin-top: clamp(36px, 5vw, 64px);
+  transition: border-color .25s ease;
+}
+.book-card:hover { border-color: rgba(255, 224, 0, 0.35); }
+.book-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--yellow);
+}
+.book-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top left, rgba(255,224,0,.06), transparent 60%);
+  pointer-events: none;
+}
+.book-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin: 0 0 14px;
+}
+.book-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(34px, 5vw, 64px);
+  line-height: .95;
+  letter-spacing: -.03em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.book-imprint {
+  color: var(--mute);
+  margin: 14px 0 28px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.book-cover {
+  width: clamp(120px, 14vw, 180px);
+  aspect-ratio: 2/3;
+  background:
+    repeating-linear-gradient(135deg, #1a1a1a 0 10px, #161616 10px 20px);
+  border: 1px solid var(--line-2);
+  position: relative;
+  flex-shrink: 0;
+}
+.book-cover::after {
+  content: "COVER";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .32em;
+  color: var(--mute-2);
+}
+@media (max-width: 760px) {
+  .book-card { grid-template-columns: 1fr; }
+  .book-cover { order: -1; }
+}
+
+/* ----------  MORE (Spokes)  ---------- */
+.spokes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(12px, 1.8vw, 20px);
+  margin-top: clamp(36px, 5vw, 64px);
+}
+.spoke {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--line-2);
+  padding: clamp(24px, 3vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 280px;
+  transition: transform .25s ease, border-color .25s ease, background .25s ease;
+  overflow: hidden;
+}
+.spoke::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: var(--yellow);
+  opacity: .5;
+  transition: opacity .25s ease, height .25s ease;
+}
+.spoke:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 224, 0, 0.6);
+  background: #181818;
+}
+.spoke:hover::before { opacity: 1; height: 4px; }
+.spoke-index {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .28em;
+  color: var(--mute-2);
+}
+.spoke-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: .95;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--text);
+}
+.spoke-domain {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+.spoke-desc {
+  color: var(--mute);
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+.spoke-go {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--mute);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color .2s ease;
+}
+.spoke:hover .spoke-go { color: var(--yellow); }
+.spoke-go .arr { transition: transform .2s ease; }
+.spoke:hover .spoke-go .arr { transform: translateX(4px); }
+
+@media (max-width: 880px) { .spokes { grid-template-columns: 1fr; } }
+
+/* ----------  FOOTER  ---------- */
+.footer {
+  padding: 72px var(--gutter) 56px;
+  text-align: center;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+.footer-mark {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: -.03em;
+  margin-bottom: 18px;
+}
+.footer-line {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin: 4px 0;
+}
+.footer-line.dim { color: var(--mute-2); margin-top: 18px; }
+.footer-line .sep { color: var(--mute-2); margin: 0 10px; }
+
+/* ----------  link-row  ---------- */
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 28px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.link-row a { color: var(--mute); transition: color .15s ease; }
+.link-row a:hover { color: var(--yellow); }
+.link-row a .arr { transition: transform .2s ease; display: inline-block; }
+.link-row a:hover .arr { transform: translateX(4px); }
+
+/* ----------  reveal  ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+@media (min-resolution: 2dppx) { .chrome { filter: contrast(1.04); } }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <a href="#top" class="nav-logo" aria-label="[MIRRØR] home">
+    <span class="chrome">[MIRRØR]</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#listen">Listen</a></li>
+    <li><a href="#watch">Watch</a></li>
+    <li><a href="#music">Music</a></li>
+    <li><a href="#book">The Book</a></li>
+    <li><a href="#more">More</a></li>
+  </ul>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+
+  <video class="hero-video"
+         autoplay muted loop playsinline preload="auto"
+         poster="assets/hero/hero-landscape-poster.png"
+         aria-hidden="true">
+    <source src="assets/hero/hero-landscape.mp4" type="video/mp4">
+  </video>
+
+  <button class="hero-mute" type="button" aria-pressed="true" aria-label="Unmute hero video">
+    <span class="hero-mute__icon" aria-hidden="true">
+      <svg class="icon-off" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M3 7v4h2.5L9 14V4L5.5 7H3z" fill="currentColor"/>
+        <path d="M12 6l4 6M16 6l-4 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <svg class="icon-on" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M3 7v4h2.5L9 14V4L5.5 7H3z" fill="currentColor"/>
+        <path d="M12 6.5c1 .8 1 4.2 0 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M14 4.5c2.2 1.8 2.2 7.2 0 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <span class="hero-mute__label">Sound off</span>
+  </button>
+
+  <!-- Indexable h1 for SEO/AEO. Video carries the visual mark. -->
+  <h1 class="sr-only">[MIRRØR] — mirror.exposed — nothing held</h1>
+
+  <div class="hero-meta-strip">
+    <p class="domain-text">mirror.exposed</p>
+    <p class="hero-tag"><span class="dot" aria-hidden="true"></span>nothing held</p>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">scroll</div>
+</header>
+
+<!-- ============ TRANSMISSION ============ -->
+<section class="section section--alt transmission" id="transmission" aria-labelledby="transmission-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="num">/ 01</span> &nbsp; Latest</span>
+      <span class="live-pip" aria-label="Channel status: open">channel open</span>
+    </div>
+
+    <div class="transmission-card reveal">
+      <div>
+        <h2 id="transmission-h" class="transmission-title">
+          First transmission incoming.<span class="ph-cursor" aria-hidden="true"></span>
+        </h2>
+        <p class="transmission-meta">Awaiting first signal &nbsp;/&nbsp; mirror.exposed</p>
+      </div>
+
+      <div class="placeholder" role="status" aria-live="polite">
+        <span class="ph-label">// Spotify embed</span>
+        <p class="ph-title">Standing by<span class="ph-cursor" aria-hidden="true"></span></p>
+        <span class="ph-sub">Replace with iframe when the show is live</span>
+        <span class="ph-note">&lt;!-- SPOTIFY EMBED: featured episode --&gt;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LISTEN ============ -->
+<section class="section section-listen" id="listen" aria-labelledby="listen-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="num">/ 02</span> &nbsp; Podcast</span>
+    </div>
+    <h2 id="listen-h" class="section-title reveal">Listen</h2>
+    <p class="section-sub reveal">Raw transmissions. Unedited. Vertical. When it comes through, it ships.</p>
+
+    <div class="listen-grid reveal">
+
+      <!-- Left: podcast cover art -->
+      <div class="listen-cover">
+        <img
+          class="listen-cover-img"
+          src="assets/podcast/cover-1024.jpg"
+          alt="[MIRRØR] podcast cover: NOTHING HELD"
+          width="1024"
+          height="1024"
+          loading="lazy"
+        >
+        <p class="listen-cover-meta">[MIRRØR] EXPOSED &nbsp;//&nbsp; PODCAST</p>
+      </div>
+
+      <!-- Right: content -->
+      <div class="listen-content">
+        <p class="listen-lede">Raw transmissions. Unedited. Vertical. When it comes through, it ships.</p>
+        <p class="listen-body">Confessional stream-of-consciousness processing of the collapse of the story of the self. No script. No schedule. No resolution.</p>
+
+        <!-- Spotify embed placeholder — replace iframe attr when show is live -->
+        <div class="listen-embed" role="status">
+          <!-- SPOTIFY EMBED: show feed.
+               Replace this entire .listen-embed div with:
+               <iframe style="border-radius:12px"
+                 src="https://open.spotify.com/embed/show/SHOW_ID"
+                 width="100%" height="232" frameborder="0"
+                 allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                 loading="lazy"></iframe>
+          -->
+          <span class="ph-label">// Spotify for Creators</span>
+          <p class="ph-title">Podcast launching soon</p>
+          <span class="ph-sub">mirror.exposed</span>
+        </div>
+
+        <div class="listen-links">
+          <!-- Update href when the show is live on each platform -->
+          <a href="#" rel="noopener" aria-label="Listen on Spotify">
+            Spotify <span class="arr">→</span>
+          </a>
+          <a href="#" rel="noopener" aria-label="Listen on Apple Podcasts">
+            Apple Podcasts <span class="arr">→</span>
+          </a>
+          <a href="#" rel="noopener" aria-label="RSS feed">
+            RSS feed <span class="arr">→</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============ WATCH ============ -->
+<section class="section" id="watch" aria-labelledby="watch-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="num">/ 03</span> &nbsp; Video</span>
+    </div>
+    <h2 id="watch-h" class="section-title reveal">Watch</h2>
+    <p class="section-sub reveal">Vertical only. 9:16. Brain dumps, observations, transmissions.</p>
+
+    <div class="watch-grid reveal">
+      <!-- Replace each .short with a YouTube Shorts <iframe> when clips exist.
+           Pattern:
+           <iframe width="315" height="560"
+             src="https://www.youtube.com/embed/VIDEO_ID"
+             title="[MIRRØR] — [title]"
+             frameborder="0"
+             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+             allowfullscreen
+             loading="lazy"
+             style="width:100%;aspect-ratio:9/16;border:0;"></iframe>
+      -->
+      <article class="short is-placeholder">
+        <span class="short-index">/ 01</span>
+        <span class="short-label">Recording<br>incoming<span class="ph-cursor" aria-hidden="true"></span></span>
+      </article>
+      <article class="short is-placeholder">
+        <span class="short-index">/ 02</span>
+        <span class="short-label">Recording<br>incoming<span class="ph-cursor" aria-hidden="true"></span></span>
+      </article>
+      <article class="short is-placeholder">
+        <span class="short-index">/ 03</span>
+        <span class="short-label">Recording<br>incoming<span class="ph-cursor" aria-hidden="true"></span></span>
+      </article>
+      <article class="short is-placeholder">
+        <span class="short-index">/ 04</span>
+        <span class="short-label">Recording<br>incoming<span class="ph-cursor" aria-hidden="true"></span></span>
+      </article>
+      <article class="short is-placeholder">
+        <span class="short-index">/ 05</span>
+        <span class="short-label">Recording<br>incoming<span class="ph-cursor" aria-hidden="true"></span></span>
+      </article>
+      <article class="short is-placeholder">
+        <span class="short-index">/ 06</span>
+        <span class="short-label">Recording<br>incoming<span class="ph-cursor" aria-hidden="true"></span></span>
+      </article>
+    </div>
+
+    <div class="link-row reveal">
+      <a href="#" rel="noopener" target="_blank">View all on YouTube <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MUSIC ============ -->
+<section class="section section--alt" id="music" aria-labelledby="music-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="num">/ 04</span> &nbsp; Releases</span>
+    </div>
+    <h2 id="music-h" class="section-title reveal">Music</h2>
+    <p class="section-sub reveal">[MIRRØR] music. Generated. Released raw. Separate from SEASØNS.</p>
+
+    <div class="music-block reveal">
+      <div>
+        <!-- Update href to DistroKid artist page when releases are live -->
+        <a class="music-cta" href="#" rel="noopener">
+          Stream on all platforms <span class="arr">→</span>
+        </a>
+        <div class="platform-row" aria-label="Available on">
+          <span>Spotify</span>
+          <span>Apple Music</span>
+          <span>YouTube Music</span>
+          <span>Tidal</span>
+          <span>Bandcamp</span>
+        </div>
+      </div>
+      <!-- Featured track embed placeholder.
+           Replace with Spotify/Bandcamp embed when first track is live. -->
+      <div class="placeholder" style="min-width: min(380px, 100%); min-height: 140px;">
+        <span class="ph-label">// Featured track</span>
+        <p class="ph-title">No release yet</p>
+        <span class="ph-sub">Embed lands here when live</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE BOOK ============ -->
+<section class="section" id="book" aria-labelledby="book-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="num">/ 05</span> &nbsp; Published</span>
+    </div>
+    <h2 id="book-h" class="section-title reveal">The Book</h2>
+
+    <article class="book-card reveal">
+      <div>
+        <p class="book-eyebrow">An imprint release</p>
+        <h3 class="book-title">The Book of Oneness</h3>
+        <p class="book-imprint">Published under <span style="color:var(--yellow);">[MIRRØR]</span>.</p>
+        <a class="music-cta" href="https://thebookofoneness.com" rel="noopener" target="_blank">
+          Read <span class="arr">→</span> thebookofoneness.com
+        </a>
+      </div>
+      <div class="book-cover" aria-hidden="true"></div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ MORE ============ -->
+<section class="section section--alt" id="more" aria-labelledby="more-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="num">/ 06</span> &nbsp; All transmissions</span>
+    </div>
+    <h2 id="more-h" class="section-title reveal">More</h2>
+    <p class="section-sub reveal">The spokes. Each one its own world; all of them passing through here.</p>
+
+    <div class="spokes reveal">
+
+      <a class="spoke" href="https://latedxaudhdguy.com" rel="noopener" target="_blank">
+        <span class="spoke-index">/ 01</span>
+        <h3 class="spoke-title">Late DX AuDHD Guy</h3>
+        <p class="spoke-domain">latedxaudhdguy.com</p>
+        <p class="spoke-desc">The lived experience. Unmasking in real time.</p>
+        <span class="spoke-go">Enter <span class="arr">→</span></span>
+      </a>
+
+      <a class="spoke" href="https://seasons.band" rel="noopener" target="_blank">
+        <span class="spoke-index">/ 02</span>
+        <h3 class="spoke-title">SEASØNS</h3>
+        <p class="spoke-domain">seasons.band</p>
+        <p class="spoke-desc">Four albums. AI vertical cinema. Spring is live.</p>
+        <span class="spoke-go">Enter <span class="arr">→</span></span>
+      </a>
+
+      <a class="spoke" href="https://mirrorpublishinghouse.com" rel="noopener" target="_blank">
+        <span class="spoke-index">/ 03</span>
+        <h3 class="spoke-title">Mirror Publishing</h3>
+        <p class="spoke-domain">mirrorpublishinghouse.com</p>
+        <p class="spoke-desc">The imprint. Books under [MIRRØR].</p>
+        <span class="spoke-go">Enter <span class="arr">→</span></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-mark"><span class="chrome">[MIRRØR]</span></div>
+  <div class="footer-line">mirror.exposed <span class="sep">·</span> 2026</div>
+  <div class="footer-line dim">nothing held.</div>
+</footer>
+
+<script>
+// sticky nav
+(function(){
+  const nav = document.getElementById('nav');
+  const tick = () => nav.classList.toggle('is-scrolled', window.scrollY > 40);
+  tick();
+  window.addEventListener('scroll', tick, { passive: true });
+})();
+
+// hero video: force-play + retry on user gesture
+(function(){
+  const vids = document.querySelectorAll('.hero-video');
+  vids.forEach(v => {
+    v.muted = true;
+    v.playsInline = true;
+    const tryPlay = () => v.play().catch(() => {
+      const kick = () => {
+        v.play().catch(()=>{});
+        document.removeEventListener('pointerdown', kick);
+        document.removeEventListener('keydown', kick);
+      };
+      document.addEventListener('pointerdown', kick, { once: true });
+      document.addEventListener('keydown', kick, { once: true });
+    });
+    if (v.readyState >= 2) tryPlay();
+    else v.addEventListener('loadeddata', tryPlay, { once: true });
+  });
+})();
+
+// mute toggle
+(function(){
+  const btn = document.querySelector('.hero-mute');
+  const v   = document.querySelector('.hero-video');
+  if (!btn || !v) return;
+  const label = btn.querySelector('.hero-mute__label');
+  const set = (muted) => {
+    v.muted = muted;
+    btn.setAttribute('aria-pressed', String(muted));
+    btn.setAttribute('aria-label', muted ? 'Unmute hero video' : 'Mute hero video');
+    if (label) label.textContent = muted ? 'Sound off' : 'Sound on';
+  };
+  set(true);
+  btn.addEventListener('click', () => {
+    const next = !v.muted;
+    set(next);
+    if (!next && v.paused) v.play().catch(()=>{});
+  });
+})();
+
+// reveal on scroll
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(el => el.classList.add('is-in'));
+    return;
+  }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.10, rootMargin: '0px 0px -6% 0px' });
+  els.forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>
