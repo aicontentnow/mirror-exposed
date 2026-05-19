@@ -21,6 +21,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&family=Abril+Fatface&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="colors_and_type.css" />
   <link rel="stylesheet" href="styles.css" />
+  <!-- Favicons. [M] in bold white on void black. SVG is the master; PNGs are
+       legacy fallbacks. -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#0A0A0A">
 </head>
 <body>
 
@@ -78,6 +85,41 @@
   </div>
 
   <div class="hero-scroll" aria-hidden="true">scroll</div>
+
+  <!-- Single handle @mirrortransmissions across all five platforms.
+       Hidden on mobile (footer carries it there). -->
+  <nav class="hero-social" aria-label="[MIRRØR] on social">
+    <a class="social-icon" href="https://www.youtube.com/@mirrortransmissions" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58Z" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m9.75 15.02 5.5-3.02-5.5-3.02v6.04Z" fill="currentColor"/>
+      </svg>
+    </a>
+    <a class="social-icon" href="https://www.tiktok.com/@mirrortransmissions" target="_blank" rel="noopener" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M14 4v9.5a3.5 3.5 0 1 1-3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M14 4c.5 2 2 3.5 4 3.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </a>
+    <a class="social-icon" href="https://www.instagram.com/mirrortransmissions/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="17.2" cy="6.8" r="1" fill="currentColor"/>
+      </svg>
+    </a>
+    <a class="social-icon" href="https://www.facebook.com/MIRRORTransmissions/" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M14 22V13h3l.5-3.5H14V7.5c0-1 .3-1.7 1.7-1.7H17.6V2.7c-.3 0-1.4-.2-2.7-.2-2.7 0-4.5 1.6-4.5 4.6V9.5H7v3.5h3.4V22H14Z" fill="currentColor"/>
+      </svg>
+    </a>
+    <a class="social-icon" href="https://soundcloud.com/mirrortransmissions" target="_blank" rel="noopener" aria-label="SoundCloud">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M3 14v3M5 12v5M7 11v6M9 10v7M11 10v7M13 10v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M15 8v9h4a4 4 0 0 0 0-8 5 5 0 0 0-4-1Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </nav>
 </header>
 
 <!-- TRANSMISSION -->
@@ -151,25 +193,29 @@
     </div>
     <h2 id="book-h" class="section-title reveal">The Book</h2>
 
-    <a class="book-card reveal"
-       href="https://thebookofoneness.com"
-       rel="noopener" target="_blank"
-       aria-labelledby="book-title-h"
-       style="margin-top: clamp(36px, 5vw, 64px);">
+    <article class="book-card reveal" aria-labelledby="book-title-h" style="margin-top: clamp(36px, 5vw, 64px);">
+      <a class="book-card__cover"
+         href="https://books2read.com/thebookofoneness"
+         rel="noopener" target="_blank"
+         aria-label="Get The Book of Oneness">
+        <img src="assets/book/cover-night-edition.jpg"
+             alt="The Book of Oneness, Night Edition cover"
+             loading="lazy" />
+      </a>
+
       <div class="book-card__content">
         <p class="book-eyebrow">Mirror Publishing House</p>
         <h3 id="book-title-h" class="book-title">The Book<br>of Oneness</h3>
         <p class="book-edition">Night Edition</p>
         <p class="book-blurb">A precision interruption. Not spirituality. Not self-help. The mechanics of how The Mind constructs Identity, Separation, and The Story of The Self.</p>
         <p class="book-editions-note">Day <span class="sep">/</span> Night <span class="sep">/</span> eBook <span class="sep">/</span> Audiobook</p>
-        <span class="book-cta">All editions at thebookofoneness.com <span class="arr">→</span></span>
+
+        <div class="book-links">
+          <a href="https://books2read.com/thebookofoneness" rel="noopener" target="_blank" class="primary">Get the book <span class="arr">→</span></a>
+          <a href="https://thebookofoneness.com" rel="noopener" target="_blank">Visit thebookofoneness.com <span class="arr">→</span></a>
+        </div>
       </div>
-      <div class="book-card__cover">
-        <img src="assets/book/cover-night-edition.jpg"
-             alt="The Book of Oneness, Night Edition cover"
-             loading="lazy" />
-      </div>
-    </a>
+    </article>
   </div>
 </section>
 
@@ -182,42 +228,47 @@
     <h2 id="watch-h" class="section-title reveal">Watch</h2>
     <p class="section-sub reveal">Vertical only. 9:16. Brain dumps, observations, transmissions.</p>
 
-    <div class="watch-carousel-wrap reveal" style="margin-top: clamp(36px, 5vw, 64px);">
-      <div class="watch-carousel" id="watch-carousel" role="region" aria-label="Vertical video reel">
-        <article class="short is-placeholder">
-          <span class="short-index">/ 01</span>
-          <span class="short-label">Recording<br>incoming<span class="ph-cursor" aria-hidden="true"></span></span>
-        </article>
-        <article class="short is-placeholder">
-          <span class="short-index">/ 02</span>
-          <span class="short-label">Recording<br>incoming<span class="ph-cursor" aria-hidden="true"></span></span>
-        </article>
-        <article class="short is-placeholder">
-          <span class="short-index">/ 03</span>
-          <span class="short-label">Recording<br>incoming<span class="ph-cursor" aria-hidden="true"></span></span>
-        </article>
-        <article class="short is-placeholder">
-          <span class="short-index">/ 04</span>
-          <span class="short-label">Recording<br>incoming<span class="ph-cursor" aria-hidden="true"></span></span>
-        </article>
-        <article class="short is-placeholder">
-          <span class="short-index">/ 05</span>
-          <span class="short-label">Recording<br>incoming<span class="ph-cursor" aria-hidden="true"></span></span>
-        </article>
-        <article class="short is-placeholder">
-          <span class="short-index">/ 06</span>
-          <span class="short-label">Recording<br>incoming<span class="ph-cursor" aria-hidden="true"></span></span>
-        </article>
+    <div class="watch-stage reveal" id="watch-stage" data-slide-count="1" style="margin-top: clamp(36px, 5vw, 64px);">
+      <div class="watch-crop" role="region" aria-roledescription="carousel" aria-label="[MIRRØR] videos">
+        <div class="watch-slides">
+
+          <!-- Slide 1: Watch You Grow (live) -->
+          <div class="watch-slide is-active" data-slide-index="0"
+               data-title="Watch You Grow"
+               data-sub="[MIRRØR] · Exposed Vol. 1">
+            <div class="watch-slide__placeholder" aria-hidden="true">
+              <span class="watch-slide__play">&#9654;</span>
+              <p class="watch-slide__label">Watch You Grow</p>
+            </div>
+            <iframe
+              src="https://www.youtube.com/embed/3yKRHbk6TlA?rel=0&modestbranding=1"
+              title="Watch You Grow · [MIRRØR] Official Music Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"></iframe>
+          </div>
+
+          <!-- Future slides: copy the block above, increment data-slide-index,
+               update data-title / data-sub, swap iframe src. JS auto-counts
+               slides and shows controls when count > 1. -->
+
+        </div>
+      </div>
+
+      <div class="watch-caption" aria-live="polite">
+        <h3 class="watch-caption__title" id="watch-caption-title">Watch You Grow</h3>
+        <p class="watch-caption__sub" id="watch-caption-sub">[MIRRØR] · Exposed Vol. 1</p>
+      </div>
+
+      <div class="watch-controls">
+        <button type="button" class="watch-arrow" data-watch-stage="prev" aria-label="Previous video">←</button>
+        <div class="watch-dots" role="tablist" aria-label="Video selector"></div>
+        <button type="button" class="watch-arrow" data-watch-stage="next" aria-label="Next video">→</button>
       </div>
     </div>
 
-    <div class="watch-nav" aria-hidden="true">
-      <button type="button" data-watch-dir="prev" aria-label="Scroll left">&#8592;</button>
-      <button type="button" data-watch-dir="next" aria-label="Scroll right">&#8594;</button>
-    </div>
-
-    <div class="link-row" style="margin-top: 24px;">
-      <a href="#" rel="noopener">View all on YouTube <span class="arr">→</span></a>
+    <div class="link-row" style="margin-top: 36px; text-align:center;">
+      <a href="https://www.youtube.com/@mirrortransmissions" target="_blank" rel="noopener">View all on YouTube <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -291,6 +342,38 @@
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-mark"><span class="chrome"><span class="br">[</span>MIRRØR<span class="br">]</span></span></div>
+  <nav class="footer-social" aria-label="[MIRRØR] on social">
+    <a class="social-icon" href="https://www.youtube.com/@mirrortransmissions" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58Z" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m9.75 15.02 5.5-3.02-5.5-3.02v6.04Z" fill="currentColor"/>
+      </svg>
+    </a>
+    <a class="social-icon" href="https://www.tiktok.com/@mirrortransmissions" target="_blank" rel="noopener" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M14 4v9.5a3.5 3.5 0 1 1-3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M14 4c.5 2 2 3.5 4 3.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </a>
+    <a class="social-icon" href="https://www.instagram.com/mirrortransmissions/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="17.2" cy="6.8" r="1" fill="currentColor"/>
+      </svg>
+    </a>
+    <a class="social-icon" href="https://www.facebook.com/MIRRORTransmissions/" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M14 22V13h3l.5-3.5H14V7.5c0-1 .3-1.7 1.7-1.7H17.6V2.7c-.3 0-1.4-.2-2.7-.2-2.7 0-4.5 1.6-4.5 4.6V9.5H7v3.5h3.4V22H14Z" fill="currentColor"/>
+      </svg>
+    </a>
+    <a class="social-icon" href="https://soundcloud.com/mirrortransmissions" target="_blank" rel="noopener" aria-label="SoundCloud">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M3 14v3M5 12v5M7 11v6M9 10v7M11 10v7M13 10v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M15 8v9h4a4 4 0 0 0 0-8 5 5 0 0 0-4-1Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </nav>
   <div class="footer-line">mirror.exposed <span class="sep">·</span> 2026</div>
   <div class="footer-line dim">nothing held.</div>
 </footer>
@@ -346,22 +429,52 @@
     });
   })();
 
+  // Watch stage: vertical-video carousel. Auto-counts active .watch-slide
+  // elements, builds pagination dots, wires prev/next/dot handlers, updates
+  // the caption (title + sub) on slide change. Controls auto-hide when only
+  // one slide is present via CSS [data-slide-count="1"].
   (function(){
-    var track = document.getElementById('watch-carousel');
-    if (!track) return;
-    var btns = document.querySelectorAll('[data-watch-dir]');
-    var step = function(){
-      var card = track.querySelector('.short');
-      if (!card) return track.clientWidth * 0.8;
-      var gap = parseFloat(getComputedStyle(track).columnGap) || 16;
-      return card.getBoundingClientRect().width + gap;
-    };
-    btns.forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var dir = btn.getAttribute('data-watch-dir') === 'next' ? 1 : -1;
-        track.scrollBy({ left: dir * step(), behavior: 'smooth' });
-      });
+    const stage = document.getElementById('watch-stage');
+    if (!stage) return;
+    const slides = [...stage.querySelectorAll('.watch-slide')];
+    const dotsHost = stage.querySelector('.watch-dots');
+    const prevBtn = stage.querySelector('[data-watch-stage="prev"]');
+    const nextBtn = stage.querySelector('[data-watch-stage="next"]');
+    const titleEl = stage.querySelector('#watch-caption-title');
+    const subEl   = stage.querySelector('#watch-caption-sub');
+    const count = slides.length;
+    stage.setAttribute('data-slide-count', String(count));
+    if (count === 0) return;
+
+    // Build dots
+    dotsHost.replaceChildren();
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('data-slide-target', String(i));
+      dot.setAttribute('aria-label', `Video ${i + 1} of ${count}`);
+      if (i === 0) dot.setAttribute('aria-current', 'true');
+      dotsHost.appendChild(dot);
     });
+    const dots = [...dotsHost.querySelectorAll('button')];
+
+    let active = 0;
+    const go = (i) => {
+      if (count <= 1) return;
+      const target = (i + count) % count;
+      slides[active].classList.remove('is-active');
+      slides[target].classList.add('is-active');
+      dots[active]?.removeAttribute('aria-current');
+      dots[target]?.setAttribute('aria-current', 'true');
+      const s = slides[target];
+      if (titleEl) titleEl.textContent = s.dataset.title || '';
+      if (subEl)   subEl.textContent   = s.dataset.sub   || '';
+      active = target;
+    };
+
+    prevBtn?.addEventListener('click', () => go(active - 1));
+    nextBtn?.addEventListener('click', () => go(active + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => go(i)));
   })();
 
   (function(){
